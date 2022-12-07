@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student-Quiz-Result</title>
+  </head>
+  <body>
+    <h1>Add Student Quiz Results</h1>
+    <form action="/results/add" method="post">
+      <div class="container">
+        <label for="student-id-name"><b>Student ID/Name</b></label>
+        <select name="student" id="student-id-name">
+          {% for student in students %}
+          <option value={{student['id']}}> {{student['id']}}/{{student['firstname']}}{{student['lastname']}}</option>
+          {% endfor %}
+        </select>
+
+        <label for="quiz-id-subject"><b>Quiz ID/Subject</b></label>
+        <select name="quiz" id="quiz-id-subject">
+          {% for quiz in quizzes %}
+          <option value={{quiz.id}}>{{quiz.id}}/{{quiz['quiz_subject']}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="grade"><b>Student Grade</b></label>
+        <input
+          type="number"
+          placeholder="Enter Grade on Quiz"
+          name="grade"
+          min="0"
+          max="100"
+          required
+        />
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

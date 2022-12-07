@@ -1,0 +1,66 @@
+/* .saved {
+  animation: saved 1.5s linear;
+}
+.delete {
+  float: right;
+}
+.student-saved-row {
+  display: inline-block;
+  display: none; 
+
+.edit, .delete, .course, .grade {
+  display: inline-block;
+}
+
+.add, .save, .course-select, .grade-select {
+  display: none;
+}
+
+.student-new-row {
+  /* display: none; 
+  display: inline-block;
+}
+  .save, .edit, .delete {
+      display: none;
+  }
+  .add {
+      display: inline-block;
+  }
+
+.student-new-row{
+  border-bottom: 2px solid #999 !important;
+  font-weight: normal;
+  font-style: italic;
+}
+td, th {
+  border-bottom: 2px solid #999 !important;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.editing {
+  display: inline-block;
+  display: inline-block;
+}
+.save, .delete {
+  display: inline-block;
+}
+.course-select, .grade-select {
+  display: block;
+}
+.add, .edit, .course, .grade {
+  display: none;
+}
+
+
+@keyframes saved {
+  0% {
+      background: #dff0d8;
+  }
+  50% {
+      background: #dff0d8;
+  }
+  100% {
+      background: #fff;
+  }
+} */
