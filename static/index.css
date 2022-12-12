@@ -64,3 +64,12 @@ td, th {
       background: #fff;
   }
 } */
+
+.container{
+  display: flex;
+}
+
+.row {
+  flex-content: space-between;
+  justify-content: space-between;
+}

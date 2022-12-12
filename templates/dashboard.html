@@ -1,66 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{{url_for('static',filename="index.css")}}" />
-    <title>Show Students</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <h1>Student Grades</h1>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Demo of prefilled student grade table. To add grades, select a
-            course and grade then press "Add Grade".
-          </div>
-        </div>
-        <table class="table table-bordered student-grade-table">
-          <thead>
-            <tr>
-              <th>Student ID</th>
-              <th>Term</th>
-              <th>Course</th>
-              <th>Credits</th>
-              <th>Grade</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="student-saved-row">
-              {% for student in students %}
-              <th>{{student['id']}}</th>
-              <td>{{student['firstname']}} {{student['lastname']}}</td>
-              <td><a href="/student/{{loop.index}}" alt="See Student Grades link">See Student's Quiz Grades</a></td>
-              <td>{% endfor %}</td>
-            </tr>
-          </tbody>
-        </table>
-        <br />
-        <table class="table table-bordered student-grade-table">
-          <thead>
-            <tr>
-              <th>Quiz ID</th>
-              <th>Quiz Subject</th>
-              <th># of Quiz Questions</th>
-              <th>Quiz Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="student-saved-row">
-              {% for quiz in quizzes %}
-              <th>{{quiz['id']}}</th>
-              <td>{{quiz['quiz_subject']}}</td>
-              <td>{{quiz['num_questions']}}</td>
-              <td>{{quiz['quiz_date']}}</td>
-              <td>{% endfor %}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+{% extends 'base.html' %}
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+{% block content %}
+<h1>Student Grades</h1>
+<div class="container">
+  <div class="row">
+    <div>
     </div>
+    <table class="table table-bordered student-grade-table">
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Student Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr class="student-saved-row">
+          <th>{{student['id']}}</th>
+          <td>{{student['firstname']}} {{student['lastname']}}</td>
+          <td><a href="/student/{{loop.index}}" alt="See Student Grades link">See Student's Quiz Grades</a></td>
+        </tr>
+          <td>{% endfor %}</td>
+      </tbody>
+    </table>
+  </div>
+    <div class="row">
+    <table class="table table-bordered student-grade-table">
+      <thead>
+        <tr>
+          <th>Quiz ID</th>
+          <th>Quiz Subject</th>
+          <th># of Quiz Questions</th>
+          <th>Quiz Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for quiz in quizzes %}
+        <tr class="student-saved-row">
+          <th>{{quiz['id']}}</th>
+          <td>{{quiz['quiz_subject']}}</td>
+          <td>{{quiz['num_questions']}}</td>
+          <td>{{quiz['quiz_date']}}</td>
+        </tr>
+          <td>{% endfor %}</td>
+      </tbody>
+    </table>
+  </div>
     <a href='/student/add' alt="Add Student link"> Add a Student</a>
     <a href='/quiz/add' alt="Add Quiz link"> Add a Quiz</a>
     <a href='/results/add' alt="Add Quiz Results link"> Add Quiz Results</a>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock content %}
