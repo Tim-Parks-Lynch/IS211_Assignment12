@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add New Student</title>
-  </head>
-  <body>
-    <h1>Add new student form</h1>
-    <form action="/student/add" method="post">
-      <div class="container">
-        <label for="firstname"><b>Student's First Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Student's First Name"
-          name="firstname"
-          required
-        />
+{% extends 'base.html' %} {% block title %}
+<title>Add New Student</title>
+{% endblock %} {% block content %}
+<h1>Add new student form</h1>
+<form action="/student/add" method="post">
+  <div class="container">
+    <label for="firstname"><b>Student's First Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter Student's First Name"
+      name="firstname"
+      required
+    />
 
-        <label for="lastname"><b>Student's Last Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Student's Last Name"
-          name="lastname"
-          required
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
-  </body>
-</html>
+    <label for="lastname"><b>Student's Last Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter Student's Last Name"
+      name="lastname"
+      required
+    />
+    <button type="submit">Login</button>
+  </div>
+</form>
+{% endblock content %}

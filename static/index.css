@@ -69,7 +69,18 @@ td, th {
   display: flex;
 }
 
-.row {
-  flex-content: space-between;
-  justify-content: space-between;
+.button-alert{
+  display:block
+}
+
+.button-stop-alert{
+   display: none;
+} 
+
+.div-alert{
+  display: block;
+}
+
+.div-stop-alert{
+  display: none;
 }

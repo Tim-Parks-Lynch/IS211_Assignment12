@@ -1,40 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Quiz</title>
-  </head>
-  <body>
-    <h1>Add Quizzes</h1>
-    <form action="/quiz/add" method="post">
-      <div class="container">
-        <label for="quiz_subject"><b>Quiz Subject</b></label>
-        <input
-          type="text"
-          placeholder="Enter Quiz Subject"
-          name="quiz_subject"
-          required
-        />
+{% extends 'base.html' %} {% block title %}
+<title>Add Quiz</title>
+{% endblock %} {% block content %}
+<h1>Add Quizzes</h1>
+<form action="/quiz/add" method="post">
+  <div class="container">
+    <label for="quiz_subject"><b>Quiz Subject</b></label>
+    <input
+      type="text"
+      placeholder="Enter Quiz Subject"
+      name="quiz_subject"
+      required
+    />
 
-        <label for="num_questions"><b>Quiz # of Questions</b></label>
-        <input
-          type="number"
-          placeholder="Enter # of Questions on Quiz"
-          name="num_questions"
-          required
-        />
+    <label for="num_questions"><b>Quiz # of Questions</b></label>
+    <input
+      type="number"
+      placeholder="Enter # of Questions on Quiz"
+      name="num_questions"
+  
+    />
 
-        <label for="quiz_date"><b>Quiz Date</b></label>
-        <input
-          type="text"
-          placeholder="February, 5th, 2015"
-          name="quiz_date"
-          required
-        />
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </body>
-</html>
+    <label for="quiz_date"><b>Quiz Date</b></label>
+    <input
+      type="text"
+      placeholder="February, 5th, 2015"
+      name="quiz_date"
+      required
+    />
+    <button type="submit">Submit</button>
+  </div>
+</form>
+{% endblock content %}

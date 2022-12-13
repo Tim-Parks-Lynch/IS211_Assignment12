@@ -102,10 +102,20 @@ def student_add():
     if "authenticated_user" in session and session["authenticated_user"]:
         if request.method == "POST":
             try:
+                error = None
                 conn = get_db_connection()
                 student_firstname = request.form["firstname"]
                 student_lastname = request.form["lastname"]
                 student = (student_firstname, student_lastname)
+
+                if not student_firstname or not student_firstname.strip():
+                    error = "First name can not be empty"
+                if not student_lastname or not student_lastname.strip():
+                    error = "Last name can not be empty"
+                if error:
+                    flash(error)
+                    return redirect(url_for("student_add"))
+
                 conn.execute(
                     "INSERT INTO students(firstname, lastname) VALUES(?,?)",
                     student,
@@ -127,27 +137,39 @@ def student_add():
 def quiz_add():
     if "authenticated_user" in session and session["authenticated_user"]:
         if request.method == "POST":
-            try:
-                conn = get_db_connection()
-                quiz_subject = request.form["quiz_subject"]
-                quiz_num_questions = int(request.form["num_questions"])
-                quiz_date = request.form["quiz_date"]
-                quiz = (
-                    quiz_subject,
-                    quiz_num_questions,
-                    quiz_date,
-                )
-                conn.execute(
-                    "INSERT INTO quizzes(quiz_subject, num_questions, quiz_date) VALUES(?, ?, ?)",
-                    quiz,
-                )
-                conn.commit()
-                return redirect(url_for("home"))
+            # try:
+            error = None
+            conn = get_db_connection()
+            quiz_subject = request.form["quiz_subject"]
+            quiz_num_questions = int(request.form["num_questions"])
+            quiz_date = request.form["quiz_date"]
+            quiz = (
+                quiz_subject,
+                quiz_num_questions,
+                quiz_date,
+            )
 
-            except Exception as e:
-                e = str(sys.exc_info())
-                create_logger("addquizlogger", "./logs/addquiz.log", e)
-                return render_template("somethingwentwrong.html", error=e)
+            if not quiz_subject or not quiz_subject.strip():
+                error = "Quiz Subject can not be empty"
+            if quiz_num_questions < 1:
+                error = "Number of Questions can not be less than 1"
+            if not quiz_date:
+                error = "Quiz Date can not be empty"
+            if error:
+                flash(error)
+                return redirect(url_for("quiz_add"))
+
+            conn.execute(
+                "INSERT INTO quizzes(quiz_subject, num_questions, quiz_date) VALUES(?, ?, ?)",
+                quiz,
+            )
+            conn.commit()
+            return redirect(url_for("home"))
+
+        # except Exception as e:
+        #     e = str(sys.exc_info())
+        #     create_logger("addquizlogger", "./logs/addquiz.log", e)
+        #     return render_template("somethingwentwrong.html", error=e)
         else:
             return render_template("addquiz.html")
     else:

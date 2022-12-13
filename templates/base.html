@@ -10,10 +10,11 @@
   </head>
   <body>
     {% for message in get_flashed_messages()%}
-    <div class="alert alert-warning">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div class="div-alert">
+      <button type="button" class="button-alert">&times;</button>
       {{message}}
     </div>
     {%endfor%} {% block content %}{% endblock %}
+    <script src="{{url_for('static', filename="index.js")}}"></script>
   </body>
 </html>
